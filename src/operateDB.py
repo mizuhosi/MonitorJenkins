@@ -1,10 +1,18 @@
 import os.path
 import sqlite3
-# 1つのcsvデータ格納フォルダに対してのDB操作を請け負う
+
+
+"""
+ 1つのcsvデータ格納フォルダに対してのDB操作を請け負う
+"""
 
 
 class operateDB:
     DB_NAME = "jenkinsdata.db"
+
+    """
+        引数で入力されたフォルダのDBと接続する
+    """
 
     def __init__(self, dirPath):
         if not os.path.isdir(dirPath):
