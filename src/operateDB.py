@@ -89,3 +89,10 @@ class operateDB:
             df.to_sql(operateDB.DB_TBL, self.conn, if_exists='append', index=False)
 
         self.conn.commit()
+
+    def output_excel(self):
+        cur = self.conn.cursor()
+        sqlOperate = "SELECT * FROM {0}".format(operateDB.DB_TBL)
+        df = pd.readsql(sqlOperate, self.conn)
+        df.to_excel(os.path.basename(self.dirPath) + ".xlsx")
+        cur.close()
